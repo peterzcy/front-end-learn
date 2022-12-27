@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise封装</title>
+</head>
+<body>
+    <script>
+        // async function main(){
+        //     // 关于async
+        //     // 1. 返回值类型不是Promise
+        //     // return 1;
+
+        //     // 2. 返回值是Promise对象
+        //     return Promise.resolve();
+
+        //     // 3. 抛出异常
+        // }
+        async function main(){
+            // 关于await
+            let p = new Promise((resolve, reject)=>{
+                // resolve('OK');
+                reject('Error');
+            })
+            
+            // 1. 右侧为promise的情况
+            // let res = await p;
+            // console.log(res);
+
+            // 2. 右侧其他类型
+            // let res = await 20;
+            // console.log(res);
+
+            // 3. 如果promise是失败状态
+            try{
+                let res = await p;
+            }catch(e){
+                console.log(e);
+            }
+        }
+
+        let result = main();
+
+        console.log(result);
+    </script>
+</body>
+</html>

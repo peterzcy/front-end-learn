@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise封装</title>
+    <script src="./promise.js"></script>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject)=>{
+            // resolve('OK');
+            // reject('Error');
+            setTimeout(()=>{
+                resolve('OK');
+                // reject('Error');
+            }, 1000);
+        });
+
+        let p2 = Promise.resolve(Promise.resolve('success'));
+
+        console.log(p2);
+
+        // const result = p.then(value=>{
+        //     console.log(value);
+        //     throw 'Error';
+        // }, reason=>{
+        //     console.warn(reason);
+        // })
+
+        // p.catch(reason=>{
+        //     console.log(reason);
+        // });
+
+        // 异常穿透
+        // 值传递
+        // p.then()
+        // .then(value=>{
+        //     console.log(222);
+        // }).then(value=>{
+        //     console.log(333);
+        // }).catch(reason=>{
+        //     console.log(reason);
+        // });
+
+        // console.log(result);
+
+        // p.then(value=>{
+        //     alert(value);
+        // }, reason=>{
+        //     alert(reason);
+        // })
+    </script>
+</body>
+</html>
