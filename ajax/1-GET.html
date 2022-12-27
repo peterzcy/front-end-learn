@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 100px;
+            border: solid 1px #903;
+        }
+    </style>
+</head>
+<body>
+    <button>发送请求</button>
+    <div id="result"></div>
+    <script>
+        const btn = document.getElementsByTagName('button')[0];
+        btn.onclick = function(){
+            // 1. 创建对象
+            const xhr = new XMLHttpRequest();
+            // 2. 初始化 设置请求方法和url
+            xhr.open('GET', 'http://127.0.0.1:8000/server');
+            // 3. 发送
+            xhr.send();
+            // 4. 事件绑定
+            xhr.onreadystatechange = function(){
+                // 判断readystate 4: 返回了所有结果
+                if(xhr.readyState === 4){
+                    // 判断状态响应码 2xx 成功
+                    // 200 404 403 401 500
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        // 处理结果 行 头 空行 体
+                        console.log(xhr.status);
+                        console.log(xhr.statusText);
+                        console.log(xhr.getAllResponseHeaders());
+                        console.log(xhr.response);
+
+                        result.innerHTML = xhr.response;
+                    }else{
+
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

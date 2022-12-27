@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsonp</title>
+    <style>
+        #result{
+            width: 300px;
+            height: 100px;
+            border: solid 1px #78a;
+        }
+    </style>
+</head>
+<body>
+    <h1>jsonp</h1>
+    <div id="result"></div>
+    <script>
+        handle = (data)=>{
+            const btn = document.getElementById("result");
+            result.innerHTML = data.name;
+        }        
+        const script = document.createElement('script');
+        script.src = "http://127.0.0.1:8000/jsonp-server?callback=handle";
+        document.body.appendChild(script);
+    </script>
+    <!-- <script src="http://127.0.0.1:8000/jsonp-server" ></script> -->
+</body>
+</html>
